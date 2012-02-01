@@ -13,3 +13,11 @@ You need Vim 7.3 or higher, compiled with python support and ideally, with
 the conceal feature.
 
 See doc/clang_complete.txt for help and license.
+
+--
+
+For Objective-C/OSX development, try this in your .vimrc:
+
+	autocmd FileType objc  set omnifunc=ClangComplete
+	autocmd FileType objc  let g:clang_library_path='/Developer/usr/clang-ide/lib'
+	autocmd FileType objc  let g:clang_use_library=1
