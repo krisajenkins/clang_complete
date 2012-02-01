@@ -341,10 +341,6 @@ class CursorKind(object):
         """Test if this is a statement kind."""
         return CursorKind_is_stmt(self)
 
-    def is_attribute(self):
-        """Test if this is an attribute kind."""
-        return CursorKind_is_attribute(self)
-
     def is_invalid(self):
         """Test if this is an invalid kind."""
         return CursorKind_is_inv(self)
@@ -1115,18 +1111,6 @@ class Type(Structure):
         """
         return Type_get_result(self)
 
-    def get_array_element_type(self):
-        """
-        Retrieve the type of the elements of the array type.
-        """
-        return Type_get_array_element(self)
-
-    def get_array_size(self):
-        """
-        Retrieve the size of the constant array.
-        """
-        return Type_get_array_size(self)
-
 ## CIndex Objects ##
 
 # CIndex objects (derived from ClangObject) are essentially lightweight
@@ -1650,10 +1634,6 @@ CursorKind_is_stmt = lib.clang_isStatement
 CursorKind_is_stmt.argtypes = [CursorKind]
 CursorKind_is_stmt.restype = bool
 
-CursorKind_is_attribute = lib.clang_isAttribute
-CursorKind_is_attribute.argtypes = [CursorKind]
-CursorKind_is_attribute.restype = bool
-
 CursorKind_is_inv = lib.clang_isInvalid
 CursorKind_is_inv.argtypes = [CursorKind]
 CursorKind_is_inv.restype = bool
@@ -1750,15 +1730,6 @@ Type_get_result = lib.clang_getResultType
 Type_get_result.argtypes = [Type]
 Type_get_result.restype = Type
 Type_get_result.errcheck = Type.from_result
-
-Type_get_array_element = lib.clang_getArrayElementType
-Type_get_array_element.argtypes = [Type]
-Type_get_array_element.restype = Type
-Type_get_array_element.errcheck = Type.from_result
-
-Type_get_array_size = lib.clang_getArraySize
-Type_get_array_size.argtype = [Type]
-Type_get_array_size.restype = c_longlong
 
 # Index Functions
 Index_create = lib.clang_createIndex
