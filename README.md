@@ -11,10 +11,10 @@ To install this plugin:
 
 * Add this to your .vimrc:
 
-	filetype on
-	autocmd FileType objc  set omnifunc=ClangComplete
-	autocmd FileType objc  let g:clang_library_path='/Developer/usr/clang-ide/lib'
-	autocmd FileType objc  let g:clang_use_library=1
+		filetype on
+		autocmd FileType objc  set omnifunc=ClangComplete
+		autocmd FileType objc  let g:clang_library_path='/Developer/usr/clang-ide/lib'
+		autocmd FileType objc  let g:clang_use_library=1
 
 * Copy the clang_complete.ios_sample.txt file to $YOUR_XCODE_PROJECT_ROOT/.clang_complete.
 
@@ -22,13 +22,13 @@ To install this plugin:
 
   * If your project uses a .pch file, append:
 
-	-include <ABSOLUTE_PATH_TO_YOUR_DOT_PCH_FILE>
+		    -include <ABSOLUTE_PATH_TO_YOUR_DOT_PCH_FILE>
 
   * If your project has custom "Header Search Path"s, append:
 
-	-I<ABSOLUTE_PATH>
-	-I<ABSOLUTE_PATH>
-	-I<ABSOLUTE_PATH>
-	...
+			-I<ABSOLUTE_PATH>
+			-I<ABSOLUTE_PATH>
+			-I<ABSOLUTE_PATH>
+			...
 
 YMMV.
