@@ -1,0 +1,32 @@
+-x objective-c
+-arch i386
+-fmessage-length=0
+-fdiagnostics-print-source-range-info
+-fdiagnostics-show-category=id
+-fdiagnostics-parseable-fixits
+-std=gnu99
+-Wno-trigraphs
+-fpascal-strings
+-O0
+-Wreturn-type
+-Wparentheses
+-Wswitch
+-Wno-unused-parameter
+-Wunused-variable
+-Wunused-value
+-Wno-shorten-64-to-32
+-DDEBUG
+-isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk
+-fexceptions
+-fasm-blocks
+-mmacosx-version-min=10.6
+-gdwarf-2
+-fvisibility=hidden
+-Wno-sign-conversion
+-fobjc-abi-version=2
+-Xclang -analyzer-checker
+-Xclang osx.cocoa.experimental.SelfInit
+-D__IPHONE_OS_VERSION_MIN_REQUIRED=40200
+-MMD
+-MT dependencies
+-F.
