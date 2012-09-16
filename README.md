@@ -1,34 +1,29 @@
-This project is a fork of RipRip/clang_complete. I've forked it and hacked it
-to get clang_complete working for iOS development. I am not a clang expert.
-Your milage may vary, but I hope this fork may save someone some time.
+# Clang Complete 
 
-To install this plugin:
+This *was* a fork of [RipRip/clang_complete](https://github.com/Rip-Rip/clang_complete), tailor for iOS/Objective-C development.
 
-* Install Pathogen [https://github.com/tpope/vim-pathogen]
-  (Recommended whenever you're installing any vim plugin.)
+I'd recommend you look there instead, and take note of the following instructions for getting your iOS project set up correctly:
 
-* Clone this project into ~/.vim/bundle/
+## iOS Integration.
 
-* Add this to your .vimrc:
+To get clang_complete working with iOS projects, you need a `.clang_complete` file in the root of your project. Here's a breakdown of what needs to go in that file:
 
-		filetype on
-		autocmd FileType objc  set omnifunc=ClangComplete
-		autocmd FileType objc  let g:clang_library_path='/Developer/usr/clang-ide/lib'
-		autocmd FileType objc  let g:clang_use_library=1
+### iOS library paths
 
-* Copy the clang_complete.ios_sample.txt file to $YOUR_XCODE_PROJECT_ROOT/.clang_complete.
+    -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk
+    -include /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk/usr/include/TargetConditionals.h
 
-* Edit that file.
+_Obviously, update these paths as new versions of the iOS software/XCode become available._
 
-  * If your project uses a .pch file, append:
+### PCH file
 
-		    -include <ABSOLUTE_PATH_TO_YOUR_DOT_PCH_FILE>
+Include the path to your .pch file, if you have one:
 
-  * If your project has custom "Header Search Path"s, append:
+    -include MyProject/MyProject-Prefix.pch
 
-			-I<ABSOLUTE_PATH>
-			-I<ABSOLUTE_PATH>
-			-I<ABSOLUTE_PATH>
-			...
+### Extra Paths
 
-YMMV.
+Include any directories you've added to *Header Search Paths* in Xcode:
+
+    -I../core-plot/build/Debug-iphoneos/include/CorePlot-CocoaTouch
+    -IBugSense-iOS.framework/Versions/A/Headers
